@@ -1,0 +1,50 @@
+//Static method
+
+package p1;
+import java.util.*;
+public class Statistics{
+	public static void getaverage(double arr[])
+	{
+		
+		double sum = 0;
+		double average = 0;
+		for(double an :arr)
+		{
+			sum = sum+an;
+		}
+		average = sum/(arr.length);
+		System.out.println(average);
+	}
+}
+
+
+//Run method = javac -d . Statistics.java
+//Class that contains main
+import p1.Statistics;
+import java.util.*;
+class Statem{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		double[][] arrm = new double[4][7];
+		for (int i = 0;i<arrm.length ;i++ ) {
+			for (int j=0;j<arrm[i].length ;j++ ) {
+				arrm[i][j] = sc.nextDouble();
+			}
+		}
+
+		for (int i = 0;i<arrm.length ;i++ ) {
+			for (int j=0;j<arrm[i].length ;j++ ) {
+				System.out.print(arrm[i][j]+" ");
+			}
+			System.out.println();
+		}
+
+		double[] arrt = new double[7];
+		for (int i = 0;i<arrm.length ;i++ ) {
+			for (int j=0;j<arrm[i].length ;j++ ) {
+				arrt[j] = arrm[i][j];
+			}
+			Statistics.getaverage(arrt);
+		}
+	}
+}
