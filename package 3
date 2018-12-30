@@ -1,0 +1,60 @@
+//Question :- 
+create three packages - PersonPAck,FlatPack and PFPack. Package PersonPack must contain a class called Person with the following attributes: name,age and cellNumber. It mst have a reference variable of the type Flat and a method named displayOwnershipInfo() that takes as an input parameter a variable of the type Flat and returns void. This method must display the information about the attributes of the classes Persons and Flat. Package FlatPack must contain the clss flat having the following attributes: apartmentName, flatNo and noOfBedrooms and the method dispFlatInfo() that displays information of the attributes of the class Flat. Package PFPack must contain a class called PFDemo that has a main method to create objects of the classes Person and Flat and invoke the displayOwnershipInfo() method. Use constructors and the import sttaement wherever necessary.//
+
+--------------------------------------------------------------------
+package FlatPack;
+public class Flat{
+	String ApartmentName;
+	int flatno,noofbedrooms;
+
+	public Flat(String apt,int ftn , int nob)
+	{
+		ApartmentName= apt;
+		flatno = ftn;
+		noofbedrooms = nob;
+	}
+	public void displayFlatInfo(){
+		System.out.println("Apartment name :"+ApartmentName);
+		System.out.println("Flatno         :"+flatno);
+		System.out.println("noofbedrooms   :"+noofbedrooms);
+	}
+}	
+
+-------------------------------------------------------------------
+package PersonPack;
+import FlatPack.Flat;
+public class Person{
+		static int pid;
+		static String pname;
+		static int age;
+		static String cellno;
+	
+	public Person(int id,String pn,int age,String cno){
+		pid=id;
+		pname=pn;
+		this.age=age;
+		cellno=cno;
+	}
+	public static void displayOwnershipInfo(Flat ft){
+	
+		System.out.println("Owner's name : "+pname);
+		System.out.println("Owner's pid  : "+pid);
+		System.out.println("Owner's age  : "+age);
+		System.out.println("Owner's cell : "+cellno);
+		ft.displayFlatInfo();
+	}
+}
+---------------------------------------------------------------
+package PFPack;
+import FlatPack.Flat;
+import PersonPack.Person;
+
+class PFDemo{
+	public static void main(String[] args) {		
+	Flat f = new Flat("krishna",301,3);
+	Person p = new Person(5,"Hardik",20,"9586115261");
+	
+	p.displayOwnershipInfo(f);
+
+	}
+}
