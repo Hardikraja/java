@@ -1,0 +1,56 @@
+//Exception
+class ArrayHasDigitException extends Exception{
+	public ArrayHasDigitException(String msg)
+	{
+		super(msg);
+	}
+}
+/---------------------------------------------------/
+import java.util.*;
+class Tes{
+
+	public static void main(String[] args) {
+		boolean b = false;
+		Scanner sc = new Scanner(System.in);
+		char[] arr = new char[5];
+		try{
+		for(int i=0;i<5;i++)
+		{
+			System.out.println("Enter "+i+" Char :");
+			arr[i] = sc.next().charAt(0);
+		}
+		b=checkthearr(arr);
+		
+			if(b==true)
+			{
+				throw new ArrayHasDigitException("Digit in between");
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+
+	static boolean checkthearr(char ar[])
+	{
+		int flag=0;
+		for(char an : ar)
+		{
+			if(Character.isDigit(an)==true)
+			{
+				flag=1;
+				break;
+			}
+			else
+			{
+				flag=0;
+			}
+		}
+
+		if(flag==1)
+			return true;
+		else
+			return false;
+	}
+}
