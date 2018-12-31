@@ -1,0 +1,77 @@
+class NewThread extends Thread{
+	NewThread(){
+		super("Demo Thread");
+		System.out.println("Child Thread : "+this);
+		start();
+	}
+
+	public void run(){
+		try{
+			
+				int no=2;
+		
+		while(true)
+		{
+		
+		int sq =(int) Math.sqrt(no);
+		int ctr = 0;
+		for(int i = 1 ; i<=sq ;i++)
+		{
+			if((no%i)==0)
+			{
+				ctr++;
+			}
+		}
+		if(ctr<=1)
+		{
+			System.out.println("Thread 1 :"+no);
+		}
+		
+		
+		no++;
+		
+		Thread.sleep(500);
+	}
+			
+		}
+		catch(InterruptedException e){
+			System.out.println("Child interrupted");
+		}
+		System.out.println("Existing child thread.");
+	}
+}
+
+class Exprime{
+	public static void main(String[] args) {
+		new NewThread();
+		try{
+			int no=2;
+		
+		while(true)
+		{
+		
+		int sq =(int) Math.sqrt(no);
+		int ctr = 0;
+		for(int i = 1 ; i<=sq ;i++)
+		{
+			if((no%i)==0)
+			{
+				ctr++;
+			}
+		}
+		if(ctr<=1)
+		{
+			System.out.println("Thread 2 :"+no);
+		}
+		
+		
+		no++;
+		
+		Thread.sleep(1000);
+	}
+		}catch(InterruptedException e){
+			System.out.println("Main thread interrupted");
+		}
+		System.out.println("Main Thread existing.");
+	}
+}
