@@ -1,0 +1,114 @@
+//Exception
+public class EmpnotFoundException extends Exception{
+	public EmpnotFoundException(String msg)
+	{
+		super(msg);
+	}
+}
+
+/------------------------------------------------/
+import java.util.*;
+class Employee{
+
+	int dob;
+	int doj;
+	int empid;
+	String empname;
+
+	void getData(){
+		Scanner sc = new Scanner(System.in);
+		Scanner sn = new Scanner(System.in);
+		System.out.println("Enter employee id :");
+		empid = sc.nextInt();
+		System.out.println("Enter doj ");
+		doj = sc.nextInt();
+		System.out.println("Enter doj ");
+		dob = sc.nextInt();
+		System.out.println("Enter employee name : ");
+		empname = sn.nextLine();
+
+		doj = doj-1900;
+		dob = dob-1900;
+	}
+
+	String setCode(){
+		String code;
+		code = doj+"-"+"M-"+empid;
+		return code;
+
+	}
+	void printData()
+	{
+		System.out.println("Employee's name : "+empname);
+		System.out.println("Employee's empid: "+empid);
+		System.out.println("Employee's doj  : "+doj);
+		System.out.println("Employee's dob  : "+dob);
+	}
+
+}
+
+class Empmain{
+
+
+	
+	public static void main(String[] args) {
+		
+		
+		Employee[] em = new Employee[5];
+		String[] emcode = new String[5];
+		for(int i =0 ; i<em.length ; i++)
+		{
+			em[i] = new Employee();
+			em[i].getData();
+			emcode[i] = em[i].setCode();
+		}
+
+		for(int i =0 ; i<em.length ; i++)
+		{
+			System.out.println("-----------------------");
+			em[i].printData();
+			
+		}
+
+		System.out.println("-----------------------");
+		for(int i =0 ; i<em.length ; i++)
+		{
+			System.out.println(emcode[i]);
+		}		
+		System.out.println("-----------------------");
+		try{
+		int flag=0;
+		System.out.println("Enter employee code to enter :");
+		Scanner sc = new Scanner(System.in);
+		String tno = sc.nextLine();
+		for(String empc :emcode)
+		{
+			if(empc.equals(tno))
+			{
+				flag=1;
+				break;
+			}
+			else
+			{
+				flag=0;
+			}
+		}
+
+
+		if(flag==0)
+		{
+			throw new EmpnotFoundException("The employee was not found in list");
+		}
+		else
+		{
+			System.out.println("Hello employee");
+		}
+	}
+	catch(EmpnotFoundException e)
+	{
+		System.out.println(e.getMessage());
+	}
+
+	}
+}
+
